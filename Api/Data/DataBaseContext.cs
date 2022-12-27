@@ -1,7 +1,7 @@
-using Domain.Entities;
-using Infrastructure.Data.Mappings;
+using Api.Entities;
+using Api.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
-namespace Infrastructure.Data
+namespace Api.Data
 {
     public class DataBaseContext : DbContext
     {

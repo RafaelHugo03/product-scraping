@@ -1,9 +1,11 @@
-using Domain.Entities;
-using Domain.Repositories;
-using Infrastructure.Data;
+using Api.Entities;
+using Api.Repositories;
+using Api.Viewmodels;
+using Api.Data;
+using Api.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories
+namespace Api.Repositories
 {
     public class ProductRepository : IProductRepository
     {
@@ -14,17 +16,18 @@ namespace Infrastructure.Repositories
             this.context = context;
         }
 
-        public void Add(Product product)
+        public async Task AddAsync(Product product)
         {
-            context.Products.Add(product);
-            context.SaveChanges();
+            await context.Products.AddAsync(product);
+            await context.SaveChangesAsync();
         }
 
-        public List<Product> GetAllProducts()
+        public PagedResult<Product> GetAllProducts(int pageIndex, int pageSize)
         {
             return context.Products
                 .AsNoTracking()
-                .ToList();
+                .AsQueryable()
+                .GetPaged<Product>(pageIndex, pageSize);
         }
 
         public Product GetProductByCode(long code)

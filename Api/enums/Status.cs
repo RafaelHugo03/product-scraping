@@ -1,4 +1,4 @@
-namespace Domain.enums
+namespace Api.enums
 {
     public enum Status
     {
