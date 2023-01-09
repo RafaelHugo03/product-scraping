@@ -24,6 +24,4 @@
 </ul>
 
 
-<p>This a challenge by <a href="https://coodesh.com/" target="blank">Coodesh</a></p>
-
 
